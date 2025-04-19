@@ -1,0 +1,228 @@
+.macro-detail {
+  padding: 2rem;
+  max-width: 800px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  margin: 0 auto;
+  position: relative;
+
+}
+
+.macro-detail-container {
+  margin-left: 300px;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.template {
+  background: #f4f4f4;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: monospace;
+  margin-bottom: 2rem;
+}
+
+.macro-detail .comment-lists {
+  list-style: none;
+  padding: 0;
+}
+
+.macro-detail .comment-list {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-left: 5px solid #0077cc;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+}
+
+.div-comment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.macro-detail h3{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.add-comment-btn,
+.edit-comment-btn,
+.delete-comment-btn {
+  background-color: #0077cc;
+  color: white;
+  padding: 0.2rem 0.8rem;
+  margin: 0.3rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: background-color 0.3s ease;
+}
+
+.add-comment-btn {
+  background-color: #28a745; /* Green for Add */
+}
+
+.edit-comment-btn {
+  background-color: #ffc107c8; /* Yellow for Edit */
+}
+
+.delete-comment-btn {
+  background-color: #dc354692; /* Red for Delete */
+}
+
+.add-comment-btn:hover,
+.edit-comment-btn:hover,
+.delete-comment-btn:hover {
+  opacity: 0.8;
+}
+
+.comment-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.comment-message {
+  margin-top: 0.5rem;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-left: 300px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.modal h2 {
+  margin-top: 0;
+}
+
+.modal input,
+.modal textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.modal input:focus,
+.modal textarea:focus{
+  border-color: #4c9aff;
+    box-shadow: 0 0 0 3px rgba(76, 154, 255, 0.2);
+    outline: none;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.modal-actions button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.modal-actions .cancel {
+  background-color: #ccc;
+}
+
+.modal-actions button:not(.cancel) {
+  background-color: #007bff;
+  color: white;
+}
+.back-btn {
+  position: fixed;
+  top: 16px;
+  left: 300px;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: #007bff;
+  text-decoration: none;
+  background-color: #f0f4ff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.back-btn:hover {
+  background-color: #dce8ff;
+}
+
+
+.edit-template-btn {
+  position: absolute;
+  top:85px;
+  right: 35px;
+  margin: 0.5rem 0;
+  border: 1px solid rgba(82, 81, 81, 0.211);
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #666;
+}
+.edit-template-btn:hover {
+  transform: scale(1.05);
+}
+
+.placeholder-hint {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+/* Suggestions Dropdown */
+.suggestions-dropdown {
+  position: absolute;
+  top: 80px !important;
+  left: 180px !important;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  list-style: none;
+  padding: 0.5rem 0;
+  margin: 0;
+  z-index: 1100;
+  max-height: 400px;
+  overflow-y: auto;
+  width: max-content;
+  min-width: 200px;
+}
+
+/* Suggestion Item */
+.suggestions-dropdown li {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.suggestions-dropdown li:hover {
+  background-color: #f0f0f0;
+}

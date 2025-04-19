@@ -1,0 +1,111 @@
+/* General container */
+.add-macro-container {
+    
+    margin-left: 300px;
+  }
+
+  .add-macro{
+    max-width: 720px;
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    margin: 4rem auto;
+  }
+  
+  /* Headings */
+  .add-macro-container h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    color: #222;
+  }
+  
+  /* Labels */
+  .add-macro-container label {
+    display: block;
+    margin-top: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Inputs and textareas */
+  .add-macro-container input[type="text"],
+  .add-macro-container textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .add-macro-container input[type="text"]:focus,
+  .add-macro-container textarea:focus {
+    border-color: #4c9aff;
+    box-shadow: 0 0 0 3px rgba(76, 154, 255, 0.2);
+    outline: none;
+  }
+  
+  /* Comment block */
+  .comment-block {
+    margin-bottom: 1rem;
+  }
+  
+  .comment-block input,
+  .comment-block textarea {
+    margin-top: 0.25rem;
+  }
+  
+  /* Buttons */
+  .add-macro-container button {
+    margin-top: 1.5rem;
+    background-color: #4c9aff;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+  }
+  
+  .add-macro-container button:hover {
+    background-color: #3a8be2;
+  }
+  
+  /* Add another comment button */
+  .add-macro-container button[type="button"] {
+    background-color: #f0f0f0;
+    color: #333;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .add-macro-container button[type="button"]:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Status message */
+  .status {
+    margin-top: 1rem;
+    font-weight: bold;
+    color: #4caf50;
+  }
+  
+  /* Error styling */
+  .status:contains("Error") {
+    color: #e53935;
+  }
+  
+  /* Suggestions dropdown (style if not inline) */
+  .suggestion-box li:hover {
+    background-color: #f5f5f5;
+    border-radius: 4px;
+  }
+  .macro-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
