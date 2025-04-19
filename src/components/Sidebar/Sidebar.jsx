@@ -6,6 +6,7 @@ import {
   FaCog,
   FaQuestionCircle,
 } from "react-icons/fa";
+import { IoIosNotifications } from "react-icons/io";
 import "./Sidebar.css";
 import Cloves from '../../assets/src/cloves.png'
 
@@ -19,6 +20,7 @@ const Sidebar = () => {
     { path: "/list", label: "All Macros", icon: <FaListAlt /> },
     { path: "/add", label: "Add Macro", icon: <FaPlusCircle /> },
     { path: "/settings", label: "Settings", icon: <FaCog /> },
+    { path: "/notifications", label: "Notifications", icon: <IoIosNotifications /> },
     { path: "/help", label: "Help", icon: <FaQuestionCircle /> },
   ];
 
