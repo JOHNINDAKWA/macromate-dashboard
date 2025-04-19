@@ -44,6 +44,9 @@ const MacroDetail = () => {
   });
   const [cursorIndex, setCursorIndex] = useState(0);
 
+  const [savingComment, setSavingComment] = useState(false);
+  const [savingTemplate, setSavingTemplate] = useState(false);
+
   const templateRef = useRef(null);
 
   useEffect(() => {
@@ -116,8 +119,32 @@ const MacroDetail = () => {
     }
   };
 
+  const handleTemplateChange = (e) => {
+    const value = e.target.value;
+    const caretPos = e.target.selectionStart;
+    setTemplateInput(value);
+    setCursorIndex(caretPos);
+
+    if (value[caretPos - 1] === ":") {
+      const rect = e.target.getBoundingClientRect();
+      const lineHeight = 24;
+      const offsetTop =
+        rect.top +
+        window.scrollY +
+        lineHeight * value.substring(0, caretPos).split("\n").length;
+      const offsetLeft = rect.left + 150;
+
+      setSuggestionPosition({ top: offsetTop, left: offsetLeft });
+      setShowSuggestions(true);
+    } else {
+      setShowSuggestions(false);
+    }
+  };
+
   const handleTemplateUpdate = async () => {
     if (!templateInput.trim()) return;
+
+    setSavingTemplate(true); // Start loading state
 
     const updatedMacro = { ...macroData, template: templateInput };
     const updatedRecord = { ...fullRecord, [macroTitle]: updatedMacro };
@@ -141,28 +168,8 @@ const MacroDetail = () => {
       }
     } catch (err) {
       console.error("Error updating template:", err);
-    }
-  };
-
-  const handleTemplateChange = (e) => {
-    const value = e.target.value;
-    const caretPos = e.target.selectionStart;
-    setTemplateInput(value);
-    setCursorIndex(caretPos);
-
-    if (value[caretPos - 1] === ":") {
-      const rect = e.target.getBoundingClientRect();
-      const lineHeight = 24;
-      const offsetTop =
-        rect.top +
-        window.scrollY +
-        lineHeight * value.substring(0, caretPos).split("\n").length;
-      const offsetLeft = rect.left + 150;
-
-      setSuggestionPosition({ top: offsetTop, left: offsetLeft });
-      setShowSuggestions(true);
-    } else {
-      setShowSuggestions(false);
+    } finally {
+      setSavingTemplate(false); // End loading state
     }
   };
 
@@ -178,6 +185,8 @@ const MacroDetail = () => {
 
   const handleModalSubmit = async () => {
     if (!newLabel || !newMessage) return;
+
+    setSavingComment(true); // Start loading state
 
     let updatedComments;
 
@@ -218,10 +227,12 @@ const MacroDetail = () => {
       }
     } catch (err) {
       console.error("Error updating comment:", err);
+    } finally {
+      setSavingComment(false); // End loading state
     }
   };
 
-  if (loading) return <div className="macro-detail">Loading...</div>;
+  if (loading) return <div className="macro-detail">↻ Loading...</div>;
   if (!macroData) return <div className="macro-detail">Macro not found.</div>;
 
   return (
@@ -292,9 +303,14 @@ const MacroDetail = () => {
                 onChange={(e) => setNewMessage(e.target.value)}
               ></textarea>
               <div className="modal-actions">
-                <button onClick={handleModalSubmit}>
-                  {isEditMode ? "Update" : "Submit"}
+                <button onClick={handleModalSubmit} disabled={savingComment}>
+                  {savingComment
+                    ? "↻ Saving..."
+                    : isEditMode
+                    ? "Update"
+                    : "Submit"}
                 </button>
+
                 <button onClick={() => setShowModal(false)} className="cancel">
                   Cancel
                 </button>
@@ -332,7 +348,12 @@ const MacroDetail = () => {
                 </ul>
               )}
               <div className="modal-actions">
-                <button onClick={handleTemplateUpdate}>Save</button>
+                <button
+                  onClick={handleTemplateUpdate}
+                  disabled={savingTemplate}
+                >
+                  {savingTemplate ? "↻ Saving..." : "Save"}
+                </button>
                 <button
                   className="cancel"
                   onClick={() => setShowTemplateModal(false)}
