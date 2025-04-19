@@ -43,6 +43,28 @@ const Help = () => {
               Go to the shared work drive folder and download the latest{" "}
               <code>macromate-extension.zip</code> file.
             </li>
+
+            <li>
+              <strong>Download the Extension:</strong>
+              <br /> Go to the shared work drive folder and download the latest{" "}
+              <code>macromate-extension.zip</code> file or Click the link below
+              to download the latest version of the extension:
+              <br />
+              <a
+                href="/assets/MacroMate.rar"
+                download
+                style={{
+                  color: "#2563eb",
+                  fontWeight: "500",
+                  display: "inline-block",
+                  marginTop: "6px",
+
+                }}
+              >
+                📦 Download MacroMate.rar
+              </a>
+            </li>
+
             <li>
               <strong>Extract the ZIP:</strong>
               <br />
@@ -277,8 +299,9 @@ const Help = () => {
 
           <h3>6. Changes</h3>
           <p>
-            If you feel you need to make a change, maybe select a different comment, 
-            just select the other comment and click <strong>Update Macro</strong> button.
+            If you feel you need to make a change, maybe select a different
+            comment, just select the other comment and click{" "}
+            <strong>Update Macro</strong> button.
           </p>
         </section>
 

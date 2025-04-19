@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa";
 import { IoIosNotifications } from "react-icons/io";
 import "./Sidebar.css";
-import Cloves from '../../assets/src/cloves.png'
+import Cloves from '../../assets/cloves.png'
 
 const Sidebar = () => {
   const location = useLocation();
