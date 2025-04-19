@@ -198,37 +198,31 @@ const Help = () => {
               "Delivery Schedule Inquiry").
             </li>
             <li>
-              <strong>Fields</strong>: Define custom variables using{" "}
-              <code>
-                {"{"}
-                {"}"}
-              </code>{" "}
-              placeholders, such as:
+            <strong>Fields</strong>: These are like blanks or empty spaces in your Macro that will be filled automatically with the right info (like a client’s name or ID). 
+  <br /><br />
+  To add a field, just type the field name followed by a colon <code>:</code>, and you’ll see a list pop up — choose the matching placeholder from the list. 
+  <br /><br />
+  For example:
               <br />
               <code>{`Client Name: {{clientName}}.`}</code> <br />
               <code>{`National ID: {{accountNumber}}.`}</code> <br />
               <code>{`Lead ID: {{leadID}}.`}</code> <br />
-              <code>{`Duka Name: {{dukazone}}.`}</code> <br />
+              <code>{`Territory: {{territory}}.`}</code> <br />
               <code>{`Duka Name: {{dukazone}}.`}</code> <br />
               <code>{`Status: {{status}}.`}</code> <br />
-              <code>{`Comment on the Status: {{statusComment}}.`}</code> <br />
+              <code>{`Comment on the Status: {{statusComment}}.`}</code> <br /><br />
+              <strong>⚠️ Important:</strong> Note that it is very important to add that placeholder as it will be used to fill the value from PaygOps. <br /><br />
+              For Example: <br />
+               <code>{`Client Name: {{clientName}}.`}</code> 
+               <br /> will be replaced with <br />
+               <code>Client Name: Larvin Kweya Ogutu</code><br />
             </li>
             <li>
-              <strong>Comments</strong>: Add one or more standard comment
+              <strong>Comments</strong>: Select one comment
               snippets that will be inserted dynamically.
             </li>
           </ul>
-          <p>
-            <strong>⚠️ Note:</strong> Anything placed inside{" "}
-            <code>
-              {"{"}
-              {"}"}
-            </code>{" "}
-            will become a fillable field in the Chrome Extension. These
-            placeholders are automatically detected and presented as input
-            fields to the user.
-          </p>
-
+ 
           <h3>4. Settings</h3>
           <p>
             Configuration options (to be added in the future) for managing data
@@ -294,7 +288,7 @@ const Help = () => {
           <p>
             Once you’re satisfied, simply click <strong>"Copy"</strong> to place
             the macro in your clipboard. You can then paste it directly into
-            your support tool or email.
+            your newly created Zendesk Ticket.
           </p>
 
           <h3>6. Changes</h3>
