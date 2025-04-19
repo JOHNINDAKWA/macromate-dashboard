@@ -300,7 +300,7 @@ const Help = () => {
         </section>
 
         <section>
-          <h2>🧠 Best Practices</h2>
+          <h2> Best Practices 🧠</h2>
           <ul>
             <li>Keep macro titles short and descriptive.</li>
             <li>
@@ -316,7 +316,7 @@ const Help = () => {
         </section>
 
         <section>
-          <h2>❓Need More Help?</h2>
+          <h2>Need More Help?</h2>
           <p>
             Reach out to the support team or leave feedback from the Settings
             page. We're constantly improving MacroMate to make your work
