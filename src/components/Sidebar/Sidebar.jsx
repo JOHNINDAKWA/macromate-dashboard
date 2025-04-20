@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   FaHome,
@@ -16,9 +16,29 @@ import Cloves from '../../assets/cloves.png';
 const Sidebar = () => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const sidebarRef = useRef();
 
   const isActive = (path) => location.pathname === path;
   const toggleSidebar = () => setIsOpen(!isOpen);
+
+  // Close sidebar when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
 
   const navItems = [
     { path: "/", label: "Home", icon: <FaHome /> },
@@ -36,7 +56,7 @@ const Sidebar = () => {
         {isOpen ? <FaTimes /> : <FaBars />}
       </div>
 
-      <div className={`sidebar ${isOpen ? "open" : ""}`}>
+      <div ref={sidebarRef} className={`sidebar ${isOpen ? "open" : ""}`}>
         <div className="dashboard">
           <img src={Cloves} alt="MacroMate Logo" />
           <h2 className="sidebar-title">MacroMate</h2>
