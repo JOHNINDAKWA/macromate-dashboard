@@ -101,7 +101,7 @@ const MacroList = () => {
               const common = isCommon(macro);
 
               return (
-                <div className="macro-card" key={key}>
+                <Link to={`/macro/${encodeURIComponent(key)}`} className="macro-card" key={key}>
                   <div className="macro-title">
                     <FaCogs className="macro-icon" />
                     <h3>{key}</h3>
@@ -122,7 +122,7 @@ const MacroList = () => {
                   <Link to={`/macro/${encodeURIComponent(key)}`}>
                     <button className="view-btn">View Details</button>
                   </Link>
-                </div>
+                </Link>
               );
             })}
         </div>
