@@ -226,4 +226,56 @@
 
 .suggestions-dropdown li:hover {
   background-color: #f0f0f0;
+}/* Media Query for Tablet and Smaller Screens */
+@media (max-width: 768px) {
+  .macro-detail-container {
+    margin-left: 0;
+    padding: 1rem;
+  }
+
+  .macro-detail {
+    padding: 1rem;
+    box-shadow: none;
+    margin-top: 1rem;
+  }
+
+  .modal {
+    margin-left: 0;
+    width: 90%;
+    max-width: 95%;
+    padding: 1rem;
+  }
+
+  .back-btn {
+    left: 1rem;
+    top: 1rem;
+    font-size: 0.9rem;
+    padding: 4px 10px;
+  }
+
+  .edit-template-btn {
+    top: 70px;
+    right: 15px;
+    font-size: 12px;
+    padding: 4px;
+  }
+
+  .div-comment {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .modal input,
+  .modal textarea {
+    font-size: 13px;
+  }
+
+  .suggestions-dropdown {
+    left: 0 !important;
+    top: auto !important;
+    position: relative;
+    margin-top: 0.5rem;
+    width: 100%;
+  }
 }

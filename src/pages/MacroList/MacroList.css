@@ -69,6 +69,7 @@
   .macro-card:hover {
     transform: translateY(-1px);
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    background: #e6e6e6c3;
   }
   
   .macro-card h3 {
@@ -160,4 +161,100 @@
     gap: 0.3rem;
     margin-left: auto;
   }
-    
+    /* For tablets and smaller (up to 1024px) */
+@media (max-width: 1024px) {
+  .macro-list {
+    margin-left: 0;
+    padding: 1.5rem;
+  }
+
+  .macro-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  .macro-btn h1 {
+    font-size: 1.5rem;
+  }
+
+  .macro-search {
+    width: 200px;
+    font-size: 0.9rem;
+  }
+
+  .view-btn {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.7rem;
+  }
+}
+
+/* For mobile screens (up to 768px) */
+@media (max-width: 768px) {
+  .macro-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .macro-btn {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .macro-btn h1 {
+    font-size: 1.4rem;
+  }
+
+  .macro-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .macro-search {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .macro-card {
+    padding: 1rem;
+  }
+
+  .macro-card h3 {
+    font-size: 0.95rem;
+  }
+
+  .macro-card p {
+    font-size: 0.88rem;
+  }
+
+  .view-btn {
+    font-size: 0.75rem;
+  }
+}
+
+/* For very small devices (up to 480px) */
+@media (max-width: 480px) {
+  .macro-list {
+    padding: 1rem;
+  }
+
+  .macro-btn h1 {
+    font-size: 1.2rem;
+  }
+
+  .refresh-btn {
+    font-size: 1rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .macro-card {
+    padding: 0.9rem;
+  }
+
+  .macro-title {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .macro-search {
+    font-size: 0.85rem;
+  }
+}

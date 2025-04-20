@@ -1,26 +1,25 @@
 .sidebar {
-    position: fixed; 
-    top: 0;
-    left: 0;
-    width: 300px;
-    height: 100vh;
-    background-color: #232336;
-    color: #f0f0f0;
-    padding: 2rem 1.2rem;
-    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    z-index: 1000; 
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100vh;
+  background-color: #232336;
+  color: #f0f0f0;
+  padding: 2rem 1.2rem;
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+}
+
 
   .dashboard{
     display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 2.5rem;
-
-
   }
 
   .dashboard img{
@@ -31,6 +30,7 @@
     font-size: 1.4rem;
     font-weight: bold;
     color: #ffffff;
+    margin-bottom: 0 !important;
     
   }
   
@@ -64,5 +64,29 @@
   
   .label {
     flex: 1;
+  }
+
+  /* Hidden on mobile by default */
+  @media (max-width: 768px) {
+    .sidebar {
+      transform: translateX(-100%);
+    }
+  
+    .sidebar.open {
+      transform: translateX(0);
+    }
+  
+    .hamburger {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 1100;
+      background: #232336;
+      color: white;
+      font-size: 1rem;
+      padding: 0.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
   }
   
