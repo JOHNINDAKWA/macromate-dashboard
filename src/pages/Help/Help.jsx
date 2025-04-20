@@ -4,6 +4,11 @@ import { MdOutlineToggleOff } from "react-icons/md";
 import { MdToggleOff } from "react-icons/md";
 
 const Help = () => {
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text).then(() => {
+      alert("Link copied to clipboard! Paste it on a new tab.");
+    });
+  };
   return (
     <div className="help">
       <div className="help-container">
@@ -30,128 +35,77 @@ const Help = () => {
         </section>
 
         <section>
-          <h2>🔧 Installing the Chrome Extension</h2>
-          <p>
-            To use the MacroMate Chrome Extension, you'll first need to install
-            it manually from the provided ZIP file.
-          </p>
+  <h2>🔧 Installing the Chrome Extension</h2>
+  <p>
+    To use the MacroMate Chrome Extension, you'll first need to install it manually from the provided ZIP file.
+  </p>
 
-          <ol>
-            <li>
-              <strong>Download the Extension:</strong>
-              <br />
-              Go to the shared work drive folder and download the latest{" "}
-              <code>macromate-extension.zip</code> file.
-            </li>
+  <ol>
+    <li>
+      <strong>Download the Extension:</strong><br />
+      Go to the shared work drive folder and download the latest <code>macromate-extension.zip</code> file.<br />
+      Alternatively, click the link below to download the latest version of the extension:<br />
+      <a
+        href="/assets/MacroMate.rar"
+        download
+        className="download-link"
+      >
+        📦 Download MacroMate.rar
+      </a>
+    </li>
 
-            <li>
-              <strong>Download the Extension:</strong>
-              <br /> Go to the shared work drive folder and download the latest{" "}
-              <code>macromate-extension.zip</code> file or Click the link below
-              to download the latest version of the extension:
-              <br />
-              <a
-                href="/assets/MacroMate.rar"
-                download
-                style={{
-                  color: "#2563eb",
-                  fontWeight: "500",
-                  display: "inline-block",
-                  marginTop: "6px",
+    <li>
+      <strong>Extract the ZIP:</strong><br />
+      Right-click the file and choose <em>“Extract All…”</em> or use a zip tool to unpack it. You'll get a folder containing the extension files.
+    </li>
 
-                }}
-              >
-                📦 Download MacroMate.rar
-              </a>
-            </li>
+    <li>
+      <strong>Open Chrome Extensions:</strong><br />
+      In your Chrome browser:<br />
+      1. Go to{" "}
+      <button
+        onClick={() => copyToClipboard("chrome://extensions/")}
+        className="copy-link"
+      >
+        chrome://extensions/{" "}
+        <span style={{ color: "green" }}>(Click to Copy)</span>
+      </button>
+      ➺ Copy and paste in a new tab.<br />
+      2. Or click the{" "}
+      <span className="inline-icon">
+        <BiExtension size={20} />
+        puzzle icon
+      </span>{" "}
+      in your toolbar and select <em>“Manage Extensions.”</em><br />
+      3. Alternatively, click the 3 dots ︙ in the top-right corner of Chrome, then click <strong>Extensions</strong> and select <strong>Manage Extensions</strong>.
+    </li>
 
-            <li>
-              <strong>Extract the ZIP:</strong>
-              <br />
-              Right-click the file and choose <em>“Extract All…”</em> or use a
-              zip tool to unpack it. You'll get a folder containing the
-              extension files.
-            </li>
-            <li>
-              <strong>Open Chrome Extensions:</strong>
-              <br />
-              In your Chrome browser, go to{" "}
-              <a
-                href="chrome://extensions/"
-                target="blank"
-                style={{
-                  color: "#2563eb",
-                  textDecoration: "underline",
-                  fontWeight: "500",
-                }}
-              >
-                chrome://extensions/
-              </a>{" "}
-              or click the{" "}
-              <span
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "4px",
-                  backgroundColor: "#f3f4f6",
-                  padding: "2px 6px",
-                  borderRadius: "6px",
-                  fontSize: "14px",
-                  fontWeight: "500",
-                  boxShadow: "inset 0 0 0 1px #d1d5db",
-                }}
-              >
-                <BiExtension size={24} />
-                puzzle icon
-              </span>{" "}
-              in your toolbar and select <em>“Manage Extensions.”</em>
-            </li>
-            <li>
-              <strong>Enable Developer Mode:</strong>
-              <br />
-              <MdOutlineToggleOff
-                size={20}
-                style={{ verticalAlign: "middle", marginRight: "4px" }}
-              />{" "}
-              ➺
-              <MdToggleOff
-                size={20}
-                style={{ verticalAlign: "middle", marginRight: "4px" }}
-              />
-              Toggle on <em>Developer Mode</em> in the top-right corner of the
-              Extensions page.
-            </li>
+    <li>
+      <strong>Enable Developer Mode:</strong><br />
+      <MdOutlineToggleOff size={20} className="toggle-icons" />
+      ➺
+      <MdToggleOff size={20} className="toggle-icons" />
+      Toggle on <em>Developer Mode</em> in the top-right corner of the Extensions page.
+    </li>
 
-            <li>
-              <strong>Load the Extension:</strong>
-              <br />
-              Click <em>“Load unpacked”</em> on the top left and{" "}
-              <strong>navigate inside</strong> the extracted folder. 📁 Open the{" "}
-              <strong>main extension folder</strong> (usually inside the first
-              one you extracted). Select
-              <strong> that inner folder,</strong> which contains files like
-              `manifest.json` and `assets`. You should now see{" "}
-              <strong>MacroMate</strong> listed among your Chrome extensions.
-            </li>
-            <li>
-              <strong>Pin the Extension:</strong>
-              <br />
-              Click the puzzle icon in your Chrome toolbar, then click the 📌pin
-              icon next to <strong>MacroMate</strong> to keep it visible and
-              accessible at all times.
-            </li>
-          </ol>
+    <li>
+      <strong>Load the Extension:</strong><br />
+      Click <em>“Load unpacked”</em> on the top left and <strong>navigate inside</strong> the extracted folder, i.e., 📁 open the <strong>main extension folder</strong> (usually inside the first one you extracted). Select <strong>that inner folder</strong>, which contains files like `manifest.json` and `assets`. You should now see <strong>MacroMate</strong> listed among your Chrome extensions.
+    </li>
 
-          <p>
-            Once installed, click on the MacroMate icon to launch the extension
-            and start using your macros! <br />
-            <br />
-            <i style={{ color: "green" }}>
-              ⚠️ Fetching will only happen when both PaygOps and Connex AI are
-              logged in and open in the background.
-            </i>
-          </p>
-        </section>
+    <li>
+      <strong>Pin the Extension:</strong><br />
+      Click the puzzle 🧩 icon, then 📌 pin MacroMate to keep it visible.
+    </li>
+  </ol>
+
+  <p>
+    Once installed, click on the MacroMate icon to launch the extension and start using your macros!<br /><br />
+    <i style={{ color: "green" }}>
+      ⚠️ Fetching will only happen when both PaygOps and Connex AI are logged in and open in the background.
+    </i>
+  </p>
+</section>
 
         <section>
           <h2>🍀 Using the MacroMate Dashboard</h2>
@@ -183,46 +137,88 @@ const Help = () => {
             </li>
             <li>
               <strong>View More</strong> – Click to expand the macro details and
-              see all fields and comments.
+              see all fields and comments. Here you can edit or delete macro
+              templates and comments.
             </li>
           </ul>
 
           <h3>3. Add Macro</h3>
           <p>
-            This page allows you to create new macro templates. Here's how the
-            structure works:
+            Use this page to create new macro templates that help standardize
+            and speed up your responses. Here's how to structure a macro:
           </p>
           <ul>
             <li>
-              <strong>Macro Title</strong>: A clear name for the macro (e.g.,
-              "Delivery Schedule Inquiry").
+              <strong>Macro Title</strong>: Provide a clear, descriptive name
+              for your macro (e.g.,
+              <code>Delivery Schedule Inquiry</code>).
             </li>
+
             <li>
-            <strong>Fields</strong>: These are like blanks or empty spaces in your Macro that will be filled automatically with the right info (like a client’s name or ID). 
-  <br /><br />
-  To add a field, just type the field name followed by a colon <code>:</code>, and you’ll see a list pop up — choose the matching placeholder from the list. 
-  <br /><br />
-  For example:
+              <strong>Fields</strong>: These act as placeholders that will be
+              auto-filled with client data (like name, ID, etc.).
               <br />
-              <code>{`Client Name: {{clientName}}.`}</code> <br />
-              <code>{`National ID: {{accountNumber}}.`}</code> <br />
-              <code>{`Lead ID: {{leadID}}.`}</code> <br />
-              <code>{`Territory: {{territory}}.`}</code> <br />
-              <code>{`Duka Name: {{dukazone}}.`}</code> <br />
-              <code>{`Status: {{status}}.`}</code> <br />
-              <code>{`Comment on the Status: {{statusComment}}.`}</code> <br /><br />
-              <strong>⚠️ Important:</strong> Note that it is very important to add that placeholder as it will be used to fill the value from PaygOps. <br /><br />
-              For Example: <br />
-               <code>{`Client Name: {{clientName}}.`}</code> 
-               <br /> will be replaced with <br />
-               <code>Client Name: Larvin Kweya Ogutu</code><br />
+              <br />
+              <strong>To insert a field:</strong>
+              <ol>
+                <li>
+                  Type the field name followed by a colon (<code>:</code>).
+                </li>
+                <li>
+                  Select the appropriate placeholder from the dropdown list.
+                </li>
+              </ol>
+              <br />
+              <strong>Examples:</strong>
+              <br />
+              <code>Client Name: {"{{clientName}}"}</code>
+              <br />
+              <code>National ID: {"{{accountNumber}}"}</code>
+              <br />
+              <code>Lead ID: {"{{leadID}}"}</code>
+              <br />
+              <code>Territory: {"{{territory}}"}</code>
+              <br />
+              <code>Duka Name: {"{{dukazone}}"}</code>
+              <br />
+              <code>Status: {"{{status}}"}</code>
+              <br />
+              <code>Comment on the Status: {"{{statusComment}}"}</code>
+              <br />
+              <br />
+              <strong>
+                Required Placeholders (must be included in all macros):
+              </strong>
+              <br />
+              <ul>
+                <li>
+                  <code>Caller Phone: {"{{phone}}"}</code>
+                </li>
+                <li>
+                  <code>Comment:</code>
+                </li>
+                <li>
+                  <code>{"{{comment}}"}</code>
+                </li>
+              </ul>
+              <p>
+                ⚠️ <strong>Important:</strong> Placeholders are used to pull
+                values from PaygOps. Always include them in every macro.
+              </p>
+              <p>
+                <strong>Example Output:</strong>
+                <br />
+                <code>Client Name: {"{{clientName}}"}</code> becomes <br />
+                <code>Client Name: Larvin Kweya Ogutu</code>
+              </p>
             </li>
+
             <li>
-              <strong>Comments</strong>: Select one comment
-              snippets that will be inserted dynamically.
+              <strong>Comments</strong>: Select a predefined comment snippet to
+              be inserted dynamically at the end of the macro.
             </li>
           </ul>
- 
+
           <h3>4. Settings</h3>
           <p>
             Configuration options (to be added in the future) for managing data
@@ -246,13 +242,22 @@ const Help = () => {
           <h3>1. Launch the Extension</h3>
           <p>
             Click on the MacroMate icon in your browser’s toolbar. The popup
-            window will appear.
+            window will appear. <br /> Click{" "}
+            <span
+              style={{
+                background: "#007bff",
+                padding: "2px 20px",
+                color: "white",
+                borderRadius: "6px",
+              }}
+            >
+              🔍Fetch Data From PaygOps
+            </span>{" "}
+            Button.
           </p>
 
           <h3>2. Select a Macro</h3>
-          <p>
-            Browse or search for the macro you need. Once selected, you’ll see:
-          </p>
+          <p>Browse or search for the macro you need.</p>
 
           <h3>3. Caller Phone Number</h3>
           <p>
@@ -273,50 +278,85 @@ const Help = () => {
             </li>
             <li>
               <strong>Comment Options</strong>: Pre-written comments you can
-              select and customize.
+              select and customize. Select One.
             </li>
           </ul>
 
           <h3>4. Generate Macro</h3>
           <p>
-            Fill in the input fields, select a comment, and click{" "}
-            <strong>"Generate"</strong>. The final macro message will appear in
-            a preview box.
+            Once you select a comment, it will scroll to the{" "}
+            <span
+              style={{
+                background: "#28a745",
+                padding: "2px 20px",
+                color: "white",
+                borderRadius: "6px",
+              }}
+            >
+              ✍️Generate Macro
+            </span>{" "}
+            button. Click it and it will scroll to the final macro message will
+            appear in a preview box.
           </p>
 
           <h3>5. Copy and Paste</h3>
           <p>
-            Once you’re satisfied, simply click <strong>"Copy"</strong> to place
-            the macro in your clipboard. You can then paste it directly into
-            your newly created Zendesk Ticket.
+            Once you’re satisfied, simply click{" "}
+            <span
+              style={{
+                background: "#ffb300",
+                padding: "2px 20px",
+                color: "black",
+                borderRadius: "6px",
+              }}
+            >
+              📜Copy
+            </span>{" "}
+            to place the macro in your clipboard. You can then paste it directly
+            into your newly created Zendesk Ticket.
           </p>
 
           <h3>6. Changes</h3>
           <p>
             If you feel you need to make a change, maybe select a different
-            comment, just select the other comment and click{" "}
-            <strong>Update Macro</strong> button.
+            comment, or select a new macro or change caller phone number, simply
+            select the other comment and click{" "}
+            <span
+              style={{
+                background: "#28a745",
+                padding: "2px 20px",
+                color: "white",
+                borderRadius: "6px",
+              }}
+            >
+              ✍️Update Macro
+            </span>{" "}
+            button.
           </p>
         </section>
 
         <section>
           <h2> Best Practices 🧠</h2>
           <ul>
-            <li>Keep macro titles short and descriptive.</li>
+            <li>Use Macro titles exactly as they are in Zendesk. </li>
             <li>
               Use consistent placeholder names (e.g.,{" "}
               <code>{`{{clientName}}`}</code>, <code>{`{{leadID}}`}</code>).
             </li>
 
             <li>
-              Review your macros periodically to ensure they are still relevant.
+              Review your macros periodically to ensure they are still relevant
+              and up to date.
             </li>
-            <li>Use comments to provide optional or situational messages.</li>
+            <li>
+              Use comments to provide optional or situational messages. Label
+              the comments for easy access in the extension
+            </li>
           </ul>
         </section>
 
         <section>
-          <h2>Need More Help?</h2>
+          <h2>Need More Help? Or you have a suggestion? 🤔💭</h2>
           <p>
             Reach out to the support team or leave feedback from the Settings
             page. We're constantly improving MacroMate to make your work
