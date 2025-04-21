@@ -6,26 +6,29 @@ import AddMacro from "./pages/AddMacro/AddMacro";
 import Help from "./pages/Help/Help";
 import Notification from "./pages/Notification/Notification";
 import Settings from "./pages/Settings/Settings";
-
+import LoginButton from "./components/LoginButton/LoginButton";
+import { LoginProvider } from "./Context/LoginContext";
 
 export default function App() {
   return (
-    <Router>
-      <div >
-        <Sidebar />
+    <LoginProvider>
+      <Router>
         <div>
-          <Routes>
-            <Route path="/" element={<MacroList />} />
-            <Route path="/list" element={<MacroList />} />
-            <Route path="/add" element={<AddMacro />} />
-            <Route path="/help" element={<Help />} />
-            <Route path="/notification" element={<Notification />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/macro/:macroTitle" element={<MacroDetail />} />
-
-          </Routes>
+          <LoginButton /> 
+          <Sidebar />
+          <div>
+            <Routes>
+              <Route path="/" element={<MacroList />} />
+              <Route path="/list" element={<MacroList />} />
+              <Route path="/add" element={<AddMacro />} />
+              <Route path="/help" element={<Help />} />
+              <Route path="/notification" element={<Notification />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/macro/:macroTitle" element={<MacroDetail />} />
+            </Routes>
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </LoginProvider>
   );
 }

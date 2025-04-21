@@ -10,11 +10,13 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import { IoIosNotifications } from "react-icons/io";
+import { useLogin } from "/src/Context/LoginContext.jsx"; // Import the login context hook
 import "./Sidebar.css";
 import Cloves from '../../assets/cloves.png';
 
 const Sidebar = () => {
   const location = useLocation();
+  const { isLoggedIn } = useLogin(); // Check if the user is logged in
   const [isOpen, setIsOpen] = useState(false);
   const sidebarRef = useRef();
 
@@ -43,7 +45,7 @@ const Sidebar = () => {
   const navItems = [
     { path: "/", label: "Home", icon: <FaHome /> },
     { path: "/list", label: "All Macros", icon: <FaListAlt /> },
-    { path: "/add", label: "Add Macro", icon: <FaPlusCircle /> },
+    ...(isLoggedIn ? [{ path: "/add", label: "Add Macro", icon: <FaPlusCircle /> }] : []), // Conditionally add "Add Macro"
     { path: "/settings", label: "Settings", icon: <FaCog /> },
     { path: "/notification", label: "Notifications", icon: <IoIosNotifications /> },
     { path: "/help", label: "Help", icon: <FaQuestionCircle /> },

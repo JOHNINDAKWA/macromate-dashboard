@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./MacroDetail.css";
+import { useLogin } from '/src/Context/LoginContext.jsx';
+
 
 const API_KEY = "$2a$10$B0bSg6uvmQU8k9TbXllduOi7ECvV9gHRI.xo7IKlU7nyIjxfL5Rry";
 const BIN_ID = "6802ee858a456b79668c8f83";
@@ -48,6 +50,9 @@ const MacroDetail = () => {
   const [savingTemplate, setSavingTemplate] = useState(false);
 
   const templateRef = useRef(null);
+
+  const { isLoggedIn} = useLogin();
+
 
   useEffect(() => {
     const fetchMacro = async () => {
@@ -235,6 +240,7 @@ const MacroDetail = () => {
   if (loading) return <div className="macro-detail">↻ Loading...</div>;
   if (!macroData) return <div className="macro-detail">Macro not found.</div>;
 
+
   return (
     <div className="macro-detail-container">
       <div className="macro-detail">
@@ -246,45 +252,52 @@ const MacroDetail = () => {
         <pre className="template">
           {macroData.template.replace(/{{[^}]+}}/g, "").trim()}
         </pre>
-        <button
-          className="edit-template-btn"
-          onClick={() => {
-            setTemplateInput(macroData.template);
-            setShowTemplateModal(true);
-          }}
-        >
-          Edit 🖋️
-        </button>
+        {isLoggedIn && (
+          <button
+            className="edit-template-btn"
+            onClick={() => {
+              setTemplateInput(macroData.template);
+              setShowTemplateModal(true);
+            }}
+          >
+            Edit 🖋️
+          </button>
+        )}
 
         <div className="div-comment">
           <h3>Comments:</h3>
-          <button onClick={handleAddComment} className="add-comment-btn">
-            Add Comment
-          </button>
-        </div>
+          {isLoggedIn && (
+  <button onClick={handleAddComment} className="add-comment-btn">
+    Add Comment
+  </button>
+)}
 
+        </div>
         <ul className="comment-lists">
-          {macroData.comments.map((comment, idx) => (
-            <li key={idx} className="comment-list">
-              <strong>{comment.label}</strong>
-              <p className="comment-message">{comment.message}</p>
-              <div className="comment-actions">
-                <button
-                  onClick={() => handleEditComment(idx)}
-                  className="edit-comment-btn"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => handleDeleteComment(idx)}
-                  className="delete-comment-btn"
-                >
-                  Delete
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
+      {macroData.comments.map((comment, idx) => (
+        <li key={idx} className="comment-list">
+          <strong>{comment.label}</strong>
+          <p className="comment-message">{comment.message}</p>
+
+          {isLoggedIn && ( // Conditionally render actions based on login status
+            <div className="comment-actions">
+              <button
+                onClick={() => handleEditComment(idx)}
+                className="edit-comment-btn"
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => handleDeleteComment(idx)}
+                className="delete-comment-btn"
+              >
+                Delete
+              </button>
+            </div>
+          )}
+        </li>
+      ))}
+    </ul>
 
         {showModal && (
           <div className="modal-overlay">
