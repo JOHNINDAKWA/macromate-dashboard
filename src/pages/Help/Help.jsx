@@ -50,7 +50,7 @@ const Help = () => {
         download
         className="download-link"
       >
-        📦 Download MacroMate.rar
+        📦 Download MacroMate Extension
       </a>
     </li>
 
