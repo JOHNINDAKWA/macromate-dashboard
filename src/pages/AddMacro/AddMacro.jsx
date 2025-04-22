@@ -111,6 +111,15 @@ const AddMacro = () => {
     }
   };
 
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text).then(() => {
+      console.log(`Copied: ${text}`);
+    }).catch((err) => {
+      console.error("Clipboard copy failed:", err);
+    });
+  };
+  
+
   return (
     <div className="add-macro-container">
       <div className="add-macro">
@@ -160,7 +169,24 @@ const AddMacro = () => {
             </ul>
           )}
 
-          <label>Comments:</label>
+<label style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+  Comments:
+  <span style={{ display: "flex", gap: "0.3rem", cursor: "pointer" }}>
+    {["🟨", "🟥", "🟦", "🟩", "🟪"].map((color) => (
+      <span
+        key={color}
+        title={`Copy ${color}`}
+        onClick={() => copyToClipboard(color)}
+        style={{ fontSize: "1.2rem", transition: "transform 0.2s" }}
+        onMouseEnter={(e) => (e.target.style.transform = "scale(1.2)")}
+        onMouseLeave={(e) => (e.target.style.transform = "scale(1.0)")}
+      >
+        {color}
+      </span>
+    ))}
+  </span>
+</label>
+
           {comments.map((comment, index) => (
             <div key={index} className="comment-block">
               <input

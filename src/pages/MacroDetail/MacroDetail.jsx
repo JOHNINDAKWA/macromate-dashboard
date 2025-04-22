@@ -2,8 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./MacroDetail.css";
-import { useLogin } from '/src/Context/LoginContext.jsx';
-
+import { useLogin } from "/src/Context/LoginContext.jsx";
 
 const API_KEY = "$2a$10$B0bSg6uvmQU8k9TbXllduOi7ECvV9gHRI.xo7IKlU7nyIjxfL5Rry";
 const BIN_ID = "6802ee858a456b79668c8f83";
@@ -51,8 +50,7 @@ const MacroDetail = () => {
 
   const templateRef = useRef(null);
 
-  const { isLoggedIn} = useLogin();
-
+  const { isLoggedIn } = useLogin();
 
   useEffect(() => {
     const fetchMacro = async () => {
@@ -178,6 +176,17 @@ const MacroDetail = () => {
     }
   };
 
+  const copyToClipboard = (text) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        console.log(`Copied: ${text}`);
+      })
+      .catch((err) => {
+        console.error("Clipboard copy failed:", err);
+      });
+  };
+
   const insertPlaceholder = (placeholder) => {
     const before = templateInput.substring(0, cursorIndex);
     const after = templateInput.substring(cursorIndex);
@@ -240,7 +249,6 @@ const MacroDetail = () => {
   if (loading) return <div className="macro-detail">↻ Loading...</div>;
   if (!macroData) return <div className="macro-detail">Macro not found.</div>;
 
-
   return (
     <div className="macro-detail-container">
       <div className="macro-detail">
@@ -267,42 +275,69 @@ const MacroDetail = () => {
         <div className="div-comment">
           <h3>Comments:</h3>
           {isLoggedIn && (
-  <button onClick={handleAddComment} className="add-comment-btn">
-    Add Comment
-  </button>
-)}
-
+            <button onClick={handleAddComment} className="add-comment-btn">
+              Add Comment
+            </button>
+          )}
         </div>
         <ul className="comment-lists">
-      {macroData.comments.map((comment, idx) => (
-        <li key={idx} className="comment-list">
-          <strong>{comment.label}</strong>
-          <p className="comment-message">{comment.message}</p>
+          {macroData.comments.map((comment, idx) => (
+            <li key={idx} className="comment-list">
+              <strong>{comment.label}</strong>
+              <p className="comment-message">{comment.message}</p>
 
-          {isLoggedIn && ( // Conditionally render actions based on login status
-            <div className="comment-actions">
-              <button
-                onClick={() => handleEditComment(idx)}
-                className="edit-comment-btn"
-              >
-                Edit
-              </button>
-              <button
-                onClick={() => handleDeleteComment(idx)}
-                className="delete-comment-btn"
-              >
-                Delete
-              </button>
-            </div>
-          )}
-        </li>
-      ))}
-    </ul>
+              {isLoggedIn && ( // Conditionally render actions based on login status
+                <div className="comment-actions">
+                  <button
+                    onClick={() => handleEditComment(idx)}
+                    className="edit-comment-btn"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => handleDeleteComment(idx)}
+                    className="delete-comment-btn"
+                  >
+                    Delete
+                  </button>
+                </div>
+              )}
+            </li>
+          ))}
+        </ul>
 
         {showModal && (
           <div className="modal-overlay">
             <div className="modal">
-              <h2>{isEditMode ? "Edit Comment" : "Add Comment"}</h2>
+              <h2
+                style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom:"0.6rem"}}
+              >
+                {isEditMode ? "Edit Comment:" : "Add Comment:"}
+                <span
+                  style={{ display: "flex", gap: "0.3rem", cursor: "pointer" }}
+                >
+                  {["🟨", "🟥", "🟦", "🟩", "🟪", "🟧"].map((color) => (
+                    <span
+                      key={color}
+                      title={`Copy ${color}`}
+                      onClick={() => copyToClipboard(color)}
+                      style={{
+                        fontSize: "1.2rem",
+                        transition: "transform 0.2s",
+                      }}
+                      onMouseEnter={(e) =>
+                        (e.target.style.transform = "scale(1.2)")
+                      }
+                      onMouseLeave={(e) =>
+                        (e.target.style.transform = "scale(1.0)")
+                      }
+                    >
+                      {color}
+                    </span>
+                  ))}
+                </span>
+              </h2>
+
               <input
                 type="text"
                 placeholder="Label"
