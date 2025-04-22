@@ -6,7 +6,6 @@ const users = [
   { username: "admin", password: "macropass" },
   { username: "john", password: "1234" },
   { username: "susan", password: "securepass" },
-  // more users...
 ];
 
 const LoginButton = () => {

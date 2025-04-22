@@ -46,7 +46,7 @@ const Help = () => {
       Go to the shared work drive folder and download the latest <code>macromate-extension.zip</code> file.<br />
       Alternatively, click the link below to download the latest version of the extension:<br />
       <a
-        href="/assets/MacroMate.rar"
+        href="/assets/macromate-extension.rar"
         download
         className="download-link"
       >
