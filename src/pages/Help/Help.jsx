@@ -2,6 +2,10 @@ import "./Help.css";
 import { BiExtension } from "react-icons/bi";
 import { MdOutlineToggleOff } from "react-icons/md";
 import { MdToggleOff } from "react-icons/md";
+import { SiGnuprivacyguard } from "react-icons/si";
+import { Link } from "react-router-dom";
+
+
 
 const Help = () => {
   const copyToClipboard = (text) => {
@@ -35,77 +39,107 @@ const Help = () => {
         </section>
 
         <section>
-  <h2>🔧 Installing the Chrome Extension</h2>
-  <p>
-    To use the MacroMate Chrome Extension, you'll first need to install it manually from the provided ZIP file.
-  </p>
+          <h2>🔧 Installing the Chrome Extension</h2>
+          <p>
+            To use the MacroMate Chrome Extension, you'll first need to install
+            it manually from the provided ZIP file.
+          </p>
 
-  <ol>
-    <li>
-      <strong>Download the Extension:</strong><br />
-      Go to the shared work drive folder and download the latest <code>macromate-extension.zip</code> file.<br />
-      Alternatively, click the link below to download the latest version of the extension:<br />
-      <a
-        href="/assets/macromate-extension.zip"
-        download
-        className="download-link"
-      >
-        📦 Download MacroMate Extension
-      </a>
-    </li>
+          <ol>
+            <li>
+              <strong>Download the Extension:</strong>
+              <br />
+              Go to the shared work drive folder and download the latest{" "}
+              <code>macromate-extension.zip</code> file.
+              <br />
+              Alternatively, click the link below to download the latest version
+              of the extension:
+              <br />
+              <a
+                href="/assets/macromate-extension.zip"
+                download
+                className="download-link"
+              >
+                📦 Download MacroMate Extension
+              </a>
+            </li>
 
-    <li>
-      <strong>Extract the ZIP:</strong><br />
-      Right-click the file and choose <em>“Extract All…”</em> or use a zip tool to unpack it. You'll get a folder containing the extension files.
-    </li>
+            <li>
+              <strong>Extract the ZIP:</strong>
+              <br />
+              Right-click the file and choose <em>“Extract All…”</em> or use a
+              zip tool to unpack it. You'll get a folder containing the
+              extension files.
+            </li>
 
-    <li>
-      <strong>Open Chrome Extensions:</strong><br />
-      In your Chrome browser:<br />
-      1. Go to{" "}
-      <button
-        onClick={() => copyToClipboard("chrome://extensions/")}
-        className="copy-link"
-      >
-        chrome://extensions/{" "}
-        <span style={{ color: "green" }}>(Click to Copy)</span>
-      </button>
-      ➺ Copy and paste in a new tab.<br />
-      2. Or click the{" "}
-      <span className="inline-icon">
-        <BiExtension size={20} />
-        puzzle icon
-      </span>{" "}
-      in your toolbar and select <em>“Manage Extensions.”</em><br />
-      3. Alternatively, click the 3 dots ︙ in the top-right corner of Chrome, then click <strong>Extensions</strong> and select <strong>Manage Extensions</strong>.
-    </li>
+            <li>
+              <strong>Open Chrome Extensions:</strong>
+              <br />
+              In your Chrome browser:
+              <br />
+              1. Go to{" "}
+              <button
+                onClick={() => copyToClipboard("chrome://extensions/")}
+                className="copy-link"
+              >
+                chrome://extensions/{" "}
+                <span style={{ color: "green" }}>(Click to Copy)</span>
+              </button>
+              ➺ Copy and paste in a new tab.
+              <br />
+              2. Or click the{" "}
+              <span className="inline-icon">
+                <BiExtension size={20} />
+                puzzle icon
+              </span>{" "}
+              in your toolbar and select <em>“Manage Extensions.”</em>
+              <br />
+              3. Alternatively, click the 3 dots ︙ in the top-right corner of
+              Chrome, then click <strong>Extensions</strong> and select{" "}
+              <strong>Manage Extensions</strong>.
+            </li>
 
-    <li>
-      <strong>Enable Developer Mode:</strong><br />
-      <MdOutlineToggleOff size={20} className="toggle-icons" />
-      ➺
-      <MdToggleOff size={20} className="toggle-icons" />
-      Toggle on <em>Developer Mode</em> in the top-right corner of the Extensions page.
-    </li>
+            <li>
+              <strong>Enable Developer Mode:</strong>
+              <br />
+              <MdOutlineToggleOff size={20} className="toggle-icons" />
+              ➺
+              <MdToggleOff size={20} className="toggle-icons" />
+              Toggle on <em>Developer Mode</em> in the top-right corner of the
+              Extensions page.
+            </li>
 
-    <li>
-      <strong>Load the Extension:</strong><br />
-      Click <em>“Load unpacked”</em> on the top left and <strong>navigate inside</strong> the extracted folder, i.e., 📁 open the <strong>main extension folder</strong> (usually inside the first one you extracted). Select <strong>that inner folder</strong>, which contains files like `manifest.json` and `assets`. You should now see <strong>MacroMate</strong> listed among your Chrome extensions.
-    </li>
+            <li>
+              <strong>Load the Extension:</strong>
+              <br />
+              Click <em>“Load unpacked”</em> on the top left and{" "}
+              <strong>navigate inside</strong> the extracted folder, i.e., 📁
+              open the <strong>main extension folder</strong> (usually inside
+              the first one you extracted). Select{" "}
+              <strong>that inner folder</strong>, which contains files like
+              `manifest.json` and `assets`. You should now see{" "}
+              <strong>MacroMate</strong> listed among your Chrome extensions.
+            </li>
 
-    <li>
-      <strong>Pin the Extension:</strong><br />
-      Click the puzzle 🧩 icon, then 📌 pin MacroMate to keep it visible.
-    </li>
-  </ol>
+            <li>
+              <strong>Pin the Extension:</strong>
+              <br />
+              Click the puzzle 🧩 icon, then 📌 pin MacroMate to keep it
+              visible.
+            </li>
+          </ol>
 
-  <p>
-    Once installed, click on the MacroMate icon to launch the extension and start using your macros!<br /><br />
-    <i style={{ color: "green" }}>
-      ⚠️ Fetching will only happen when both PaygOps and Connex AI are logged in and open in the background.
-    </i>
-  </p>
-</section>
+          <p>
+            Once installed, click on the MacroMate icon to launch the extension
+            and start using your macros!
+            <br />
+            <br />
+            <i style={{ color: "green" }}>
+              ⚠️ Fetching will only happen when both PaygOps and Connex AI are
+              logged in and open in the background.
+            </i>
+          </p>
+        </section>
 
         <section>
           <h2>🍀 Using the MacroMate Dashboard</h2>
@@ -363,6 +397,21 @@ const Help = () => {
             smoother and faster.
           </p>
         </section>
+
+        <div className="settings-section privacy-section">
+        <h3>
+          {" "}
+          <SiGnuprivacyguard />
+          Privacy & Legal
+        </h3>
+        <p>
+          We care about your data. Please review our{" "}
+          <Link to="/privacy-policy" className="privacy-link">
+            Privacy Policy
+          </Link>{" "}
+          to understand how we handle your information.
+        </p>
+      </div>
       </div>
     </div>
   );

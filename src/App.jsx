@@ -8,6 +8,7 @@ import Notification from "./pages/Notification/Notification";
 import Settings from "./pages/Settings/Settings";
 import LoginButton from "./components/LoginButton/LoginButton";
 import { LoginProvider } from "./Context/LoginContext";
+import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
               <Route path="/help" element={<Help />} />
               <Route path="/notification" element={<Notification />} />
               <Route path="/settings" element={<Settings />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/macro/:macroTitle" element={<MacroDetail />} />
             </Routes>
           </div>

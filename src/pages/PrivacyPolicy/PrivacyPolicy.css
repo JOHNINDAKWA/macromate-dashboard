@@ -1,0 +1,111 @@
+.privacy-container {
+    margin-left: 300px;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(to right, #f0f4f8, #f9fafb);
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .privacy-card {
+    max-width: 800px;
+    background-color: #ffffff;
+    padding: 2.5rem 3.5rem;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    color: #1f2937;
+    line-height: 1.7;
+    font-size: 1.05rem;
+  }
+  
+  .privacy-card h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #022060;
+  }
+  
+  .privacy-card h2 {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #022060;
+  }
+  
+  .privacy-card p,
+  .privacy-card ul {
+    margin-top: 0.75rem;
+  }
+  
+  .privacy-card ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+  }
+  
+  .privacy-card li {
+    margin-bottom: 0.6rem;
+  }
+  
+  .privacy-card a {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+  
+  .effective-date {
+    font-style: italic;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  /* Icon styling */
+  .icon {
+    transition: transform 0.2s ease;
+  }
+  .icon:hover {
+    transform: scale(1.15);
+  }
+  
+  /* Section icon color classes */
+  .blue { color: #2563eb; }
+  .green { color: #10b981; }
+  .red { color: #ef4444; }
+  .teal { color: #14b8a6; }
+  .indigo { color: #6366f1; }
+  .purple { color: #8b5cf6; }
+  .yellow { color: #f59e0b; }
+  .rose { color: #f43f5e; }
+  @media screen and (max-width: 768px) {
+    .privacy-container {
+      margin-left: 0;
+      padding: 1.5rem 1rem;
+    }
+  
+    .privacy-card {
+      padding: 2rem 1.5rem;
+      font-size: 1rem;
+    }
+  
+    .privacy-card h1 {
+      font-size: 1.5rem;
+      flex-wrap: wrap;
+    }
+  
+    .privacy-card h2 {
+      font-size: 1.2rem;
+      flex-wrap: wrap;
+    }
+  
+    .effective-date {
+      font-size: 0.9rem;
+      flex-wrap: wrap;
+    }
+  }
+  
