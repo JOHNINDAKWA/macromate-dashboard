@@ -56,7 +56,7 @@ const Help = () => {
               of the extension:
               <br />
               <a
-                href="/assets/macromate-extension.zip"
+                href="/assets/macromate-extension.rar"
                 download
                 className="download-link"
               >
